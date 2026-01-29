@@ -2,6 +2,33 @@ import { expect, test } from 'vitest'
 
 import { formatHTML } from './format-html'
 
+test('should format a simple HTML', () => {
+  const html = `
+  <div id="header">
+    <h1>Hello World!</h1>
+    <ul id="main-list" class="list"><li><a href="#">My HTML</a></li></ul>
+  </div>
+  `
+
+  expect(formatHTML(html)).toEqual(`
+<div id="header">
+  <h1>
+    Hello World!
+  </h1>
+  <ul
+    class="list"
+    id="main-list"
+  >
+    <li>
+      <a href="#">
+        My HTML
+      </a>
+    </li>
+  </ul>
+</div>
+`)
+})
+
 test('should properly nest everything', () => {
   const html = `<ul><li><a href="#">List item 1</a></li><li><a href="#">List item 2</a></li></ul>`
 

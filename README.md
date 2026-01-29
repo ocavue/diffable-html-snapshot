@@ -44,12 +44,19 @@ console.log(formatHTML(html))
 
 Will output:
 
-```html
+```
 <div id="header">
-  <h1>Hello World!</h1>
-  <ul id="main-list" class="list">
+  <h1>
+    Hello World!
+  </h1>
+  <ul
+    class="list"
+    id="main-list"
+  >
     <li>
-      <a href="#"> My HTML </a>
+      <a href="#">
+        My HTML
+      </a>
     </li>
   </ul>
 </div>
