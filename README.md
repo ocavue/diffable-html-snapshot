@@ -156,6 +156,7 @@ This project is a fork of [diffable-html](https://github.com/algolia/diffable-ht
 - Add ESM support
 - Add TypeScript declarations
 - Add built-in snapshot serializer for Jest and Vitest
+- Sort attributes alphabetically
 
 ## License
 
