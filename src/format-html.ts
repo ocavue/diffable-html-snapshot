@@ -20,8 +20,15 @@ const voidElements = [
   'wbr',
 ]
 
-function formatHTML(html, { sortAttributes = (names) => names } = {}) {
-  const elements = []
+interface FormatHTMLOptions {
+  sortAttributes?: (names: string[]) => string[]
+}
+
+function formatHTML(
+  html: string,
+  { sortAttributes = (names) => names }: FormatHTMLOptions = {},
+) {
+  const elements: string[] = []
   const indentSize = 2
 
   let currentDepth = 0
@@ -34,11 +41,11 @@ function formatHTML(html, { sortAttributes = (names) => names } = {}) {
     currentDepth--
   }
 
-  const getIndentation = (size) => {
+  const getIndentation = (size: number) => {
     return ' '.repeat(size)
   }
 
-  const getIndentationForDepth = (depth) => {
+  const getIndentationForDepth = (depth: number) => {
     return getIndentation(indentSize * depth)
   }
 
@@ -46,11 +53,11 @@ function formatHTML(html, { sortAttributes = (names) => names } = {}) {
     return getIndentationForDepth(currentDepth)
   }
 
-  const getAttributeIndentation = (tagName) => {
+  const getAttributeIndentation = () => {
     return getIndentation(indentSize * currentDepth - 1)
   }
 
-  const append = (content) => {
+  const append = (content: string) => {
     elements.push(content)
   }
 
@@ -58,7 +65,7 @@ function formatHTML(html, { sortAttributes = (names) => names } = {}) {
     append('\n')
   }
 
-  const appendIndentation = (depth) => {
+  const appendIndentation = (depth: number) => {
     append(getIndentationForDepth(depth))
   }
 
@@ -66,7 +73,7 @@ function formatHTML(html, { sortAttributes = (names) => names } = {}) {
     append(getCurrentIndentation())
   }
 
-  const appendOpeningTag = (name) => {
+  const appendOpeningTag = (name: string) => {
     append('<' + name)
   }
 
@@ -80,7 +87,7 @@ function formatHTML(html, { sortAttributes = (names) => names } = {}) {
     append(closeWith)
   }
 
-  const appendAttribute = (name, value) => {
+  const appendAttribute = (name: string, value: string) => {
     let attribute = ' ' + name
 
     if (value.length > 0) {
@@ -90,13 +97,13 @@ function formatHTML(html, { sortAttributes = (names) => names } = {}) {
     append(attribute)
   }
 
-  const appendAttributeOnNewLine = (name, value, tagName) => {
+  const appendAttributeOnNewLine = (name: string, value: string) => {
     appendLineBreak()
-    append(getAttributeIndentation(tagName))
+    append(getAttributeIndentation())
     appendAttribute(name, value)
   }
 
-  const appendAttributes = (attributes, tagName) => {
+  const appendAttributes = (attributes: Record<string, string>) => {
     const names = sortAttributes(Object.keys(attributes))
 
     if (names.length === 1) {
@@ -108,11 +115,14 @@ function formatHTML(html, { sortAttributes = (names) => names } = {}) {
     }
 
     for (let name of names) {
-      appendAttributeOnNewLine(name, attributes[name], tagName)
+      appendAttributeOnNewLine(name, attributes[name])
     }
   }
 
-  const appendClosingTag = (attributes, closeWith) => {
+  const appendClosingTag = (
+    attributes: Record<string, string>,
+    closeWith: string,
+  ) => {
     if (Object.keys(attributes).length <= 1) {
       appendClosingTagOnSameLine(closeWith)
 
@@ -125,26 +135,28 @@ function formatHTML(html, { sortAttributes = (names) => names } = {}) {
     return elements.join('')
   }
 
-  const isXmlDirective = (name) => {
+  const isXmlDirective = (name: string) => {
     return name === '?xml'
   }
 
-  const isVoidTagName = (name) => {
+  const isVoidTagName = (name: string) => {
     return voidElements.includes(name)
   }
 
   // https://www.w3.org/TR/html52/infrastructure.html#space-characters
   // defines "space characters" to include SPACE, TAB, LF, FF, and CR.
-  const trimText = (text) => {
+  const trimText = (text: string) => {
     return text.replace(/^[\t\n\f\r ]+|[\t\n\f\r ]+$/g, '')
   }
 
-  const extractAttributesFromString = (content: string) => {
-    const attributes = {}
+  const extractAttributesFromString = (
+    content: string,
+  ): Record<string, string> => {
+    const attributes: Record<string, string> = {}
 
     const pieces = content.split(/\s/)
     // Remove tag name.
-    delete pieces[0]
+    pieces.splice(0, 1)
 
     pieces.forEach((element) => {
       if (element.length === 0) {
@@ -179,7 +191,7 @@ function formatHTML(html, { sortAttributes = (names) => names } = {}) {
         appendOpeningTag(name)
 
         const attributes = extractAttributesFromString(data)
-        appendAttributes(attributes, name)
+        appendAttributes(attributes)
         appendClosingTag(attributes, closingTag)
         decreaseCurrentDepth()
       },
@@ -189,7 +201,7 @@ function formatHTML(html, { sortAttributes = (names) => names } = {}) {
         increaseCurrentDepth()
         appendOpeningTag(name)
 
-        appendAttributes(attributes, name)
+        appendAttributes(attributes)
         appendClosingTag(attributes, '>')
       },
       ontext: function (text) {
@@ -240,5 +252,5 @@ function formatHTML(html, { sortAttributes = (names) => names } = {}) {
   return render()
 }
 
-export { formatHTML }
+export { formatHTML, type FormatHTMLOptions }
 export default formatHTML
