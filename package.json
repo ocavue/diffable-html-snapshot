@@ -44,6 +44,9 @@
     "test": "vitest",
     "typecheck": "tsc -b"
   },
+  "dependencies": {
+    "htmlparser2": "^10.1.0"
+  },
   "devDependencies": {
     "@ocavue/eslint-config": "^3.10.0",
     "@ocavue/tsconfig": "^0.6.2",
