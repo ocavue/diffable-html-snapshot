@@ -1,0 +1,8 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should configure via expect.addSnapshotSerializer 1`] = `
+<img
+  loading="lazy"
+  src="https://example.com/image.png"
+>
+`;

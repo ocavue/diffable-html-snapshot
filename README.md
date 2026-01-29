@@ -76,7 +76,7 @@ import { test, expect } from 'vitest'
 test('should format HTML', () => {
   expect(
     formatHTML('<input type="button" > Click me</input>'),
-  ).toMatchInlineSnapshot()
+  ).toMatchSnapshot()
 })
 ```
 
@@ -90,7 +90,7 @@ import { snapshotSerializer } from 'diffable-html-snapshot'
 expect.addSnapshotSerializer(snapshotSerializer)
 
 test('should format HTML', () => {
-  expect('<input type="button" > Click me</input>').toMatchInlineSnapshot()
+  expect('<input type="button" > Click me</input>').toMatchSnapshot()
 })
 ```
 
@@ -120,7 +120,7 @@ const { formatHTML } = require('diffable-html-snapshot')
 test('should format HTML', () => {
   expect(
     formatHTML('<input type="button" > Click me</input>'),
-  ).toMatchInlineSnapshot()
+  ).toMatchSnapshot()
 })
 ```
 
@@ -133,7 +133,7 @@ const { snapshotSerializer } = require('diffable-html-snapshot')
 expect.addSnapshotSerializer(snapshotSerializer)
 
 test('should format HTML', () => {
-  expect('<input type="button" > Click me</input>').toMatchInlineSnapshot()
+  expect('<input type="button" > Click me</input>').toMatchSnapshot()
 })
 ```
 
