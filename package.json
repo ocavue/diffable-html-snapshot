@@ -26,6 +26,7 @@
       "default": "./dist/index.js"
     },
     "./snapshot-serializer": {
+      "types": "./dist/snapshot-serializer.d.ts",
       "import": "./dist/snapshot-serializer.js",
       "require": "./dist/snapshot-serializer.cjs",
       "default": "./dist/snapshot-serializer.js"
