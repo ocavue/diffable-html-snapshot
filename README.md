@@ -14,6 +14,7 @@ Formatting consists of:
 
 - indenting every level with 2 spaces
 - align attributes
+- sort attributes alphabetically
 - put every opening and closing tag on its own line
 - trimming text nodes
 
@@ -54,7 +55,7 @@ Will output:
 </div>
 ```
 
-## Usage with Vitest
+## Usage with [Vitest](https://vitest.dev/)
 
 There are three ways to use this library with Vitest:
 
@@ -66,7 +67,9 @@ import { formatHTML } from 'diffable-html-snapshot'
 import { test, expect } from 'vitest'
 
 test('should format HTML', () => {
-  expect(formatHTML('<input type="button" > Click me</input>')).toMatchInlineSnapshot()
+  expect(
+    formatHTML('<input type="button" > Click me</input>'),
+  ).toMatchInlineSnapshot()
 })
 ```
 
@@ -97,7 +100,7 @@ export default defineConfig({
 })
 ```
 
-## Usage with Jest
+## Usage with [Jest](https://jestjs.io/)
 
 There are three ways to use this library with Jest:
 

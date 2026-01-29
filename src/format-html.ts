@@ -24,9 +24,13 @@ interface FormatHTMLOptions {
   sortAttributes?: (names: string[]) => string[]
 }
 
+function defaultSortAttributes(names: string[]) {
+  return names.slice().sort()
+}
+
 function formatHTML(
   html: string,
-  { sortAttributes = (names) => names }: FormatHTMLOptions = {},
+  { sortAttributes = defaultSortAttributes }: FormatHTMLOptions = {},
 ) {
   const elements: string[] = []
   const indentSize = 2

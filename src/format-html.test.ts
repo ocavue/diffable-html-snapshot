@@ -29,9 +29,9 @@ test('should align attributes vertically', () => {
   expect(formatHTML(html)).toEqual(
     `
 <input
+  class="form-control"
   name="test"
   value="true"
-  class="form-control"
 >
 `,
   )
@@ -110,8 +110,8 @@ test('should support xml', () => {
 
   expect(formatHTML(xml)).toEqual(`
 <?xml
-  version="1.0"
   encoding="utf-8"
+  version="1.0"
 ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -187,8 +187,8 @@ test('should support html directives', () => {
   <head>
     <meta charset="utf-8">
     <meta
-      http-equiv="x-ua-compatible"
       content="ie=edge"
+      http-equiv="x-ua-compatible"
     >
     <title>
       test
@@ -202,9 +202,9 @@ test('should support html directives', () => {
       Hello world! This is HTML5 Boilerplate.
     </p>
     <script
-      src="https://code.jquery.com/jquery-{{JQUERY_VERSION}}.min.js"
-      integrity="{{JQUERY_SRI_HASH}}"
       crossorigin="anonymous"
+      integrity="{{JQUERY_SRI_HASH}}"
+      src="https://code.jquery.com/jquery-{{JQUERY_VERSION}}.min.js"
     >
     </script>
     <script src="js/plugins.js">
@@ -216,9 +216,9 @@ test('should support html directives', () => {
       ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
     </script>
     <script
-      src="https://www.google-analytics.com/analytics.js"
       async
       defer
+      src="https://www.google-analytics.com/analytics.js"
     >
     </script>
   </body>
@@ -273,14 +273,16 @@ test('should not strip out conditional comments', () => {
 })
 
 test('should sort attributes with `sortAttributes` function', () => {
-  const html = `<input name="test" value="true" class="form-control">`
-  const sortAttributes = (names: string[]) => names.sort()
+  const html = `<input name="test" value="true" class="form-control" data-attr-1 data-attr-2>`
+  const sortAttributes = (names: string[]) => names.slice().sort().reverse()
   expect(formatHTML(html, { sortAttributes })).toEqual(
     `
 <input
-  class="form-control"
-  name="test"
   value="true"
+  name="test"
+  data-attr-2
+  data-attr-1
+  class="form-control"
 >
 `,
   )
