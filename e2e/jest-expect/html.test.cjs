@@ -3,11 +3,13 @@ const { snapshotSerializer } = require('diffable-html-snapshot')
 
 test('should configure via expect.addSnapshotSerializer', () => {
   expect.addSnapshotSerializer(snapshotSerializer)
-  expect('<div>  Hello, world!  </ div>').toMatchInlineSnapshot(`
+  expect('<img  loading="lazy" src= "https://example.com/image.png"/>')
+    .toMatchInlineSnapshot(`
 
-   <div>
-     Hello, world!
-   </div>
+   <img
+     loading="lazy"
+     src="https://example.com/image.png"
+   >
 
   `)
 })

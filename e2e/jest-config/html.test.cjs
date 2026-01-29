@@ -1,11 +1,13 @@
 const { expect, test } = require('@jest/globals')
 
 test('should configure via jest.config.cjs', () => {
-  expect('<div>  Hello, world!  </ div>').toMatchInlineSnapshot(`
+  expect('<img  loading="lazy" src= "https://example.com/image.png"/>')
+    .toMatchInlineSnapshot(`
 
-   <div>
-     Hello, world!
-   </div>
+   <img
+     loading="lazy"
+     src="https://example.com/image.png"
+   >
 
   `)
 })

@@ -4,9 +4,11 @@ import snapshotSerializer from './snapshot-serializer'
 
 test('should add itself to the snapshot serializer', () => {
   expect.addSnapshotSerializer(snapshotSerializer)
-  expect('<div>  Hello, world!  </ div>').toMatchInlineSnapshot(`
-    <div>
-      Hello, world!
-    </div>
-  `)
+  expect('<img  loading="lazy" src= "https://example.com/image.png"/>')
+    .toMatchInlineSnapshot(`
+      <img
+        loading="lazy"
+        src="https://example.com/image.png"
+      >
+    `)
 })
