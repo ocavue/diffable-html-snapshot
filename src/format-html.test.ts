@@ -1,11 +1,11 @@
 import { expect, test } from 'vitest'
 
-import format from './format-html'
+import { formatHTML } from './format-html'
 
 test('should properly nest everything', () => {
   const html = `<ul><li><a href="#">List item 1</a></li><li><a href="#">List item 2</a></li></ul>`
 
-  expect(format(html)).toEqual(
+  expect(formatHTML(html)).toEqual(
     `
 <ul>
   <li>
@@ -26,7 +26,7 @@ test('should properly nest everything', () => {
 test('should align attributes vertically', () => {
   const html = `<input name="test" value="true" class="form-control">`
 
-  expect(format(html)).toEqual(
+  expect(formatHTML(html)).toEqual(
     `
 <input
   name="test"
@@ -40,7 +40,7 @@ test('should align attributes vertically', () => {
 test('should close tag on the same line if there is only one attribute', () => {
   const html = `<input  name="test" >`
 
-  expect(format(html)).toEqual(
+  expect(formatHTML(html)).toEqual(
     `
 <input name="test">
 `,
@@ -50,7 +50,7 @@ test('should close tag on the same line if there is only one attribute', () => {
 test('should not decode entities', () => {
   const html = `<div>&nbsp;</div>`
 
-  expect(format(html)).toEqual(
+  expect(formatHTML(html)).toEqual(
     `
 <div>
   &nbsp;
@@ -62,7 +62,7 @@ test('should not decode entities', () => {
 test('should trim text nodes', () => {
   const html = `<span> surrounded    </span>`
 
-  expect(format(html)).toEqual(
+  expect(formatHTML(html)).toEqual(
     `
 <span>
   surrounded
@@ -74,7 +74,7 @@ test('should trim text nodes', () => {
 test('should not trim Unicode whitespace', () => {
   const html = `<span> \u2009 surrounded  \u2005\u200A  </span>`
 
-  expect(format(html)).toEqual(
+  expect(formatHTML(html)).toEqual(
     `
 <span>
   \u2009 surrounded  \u2005\u200A
@@ -86,7 +86,7 @@ test('should not trim Unicode whitespace', () => {
 test('should not introduce line break if text node is empty', () => {
   const html = `<span>     </span>`
 
-  expect(format(html)).toEqual(
+  expect(formatHTML(html)).toEqual(
     `
 <span>
 </span>
@@ -97,7 +97,7 @@ test('should not introduce line break if text node is empty', () => {
 test('should not lower case tags', () => {
   const html = `<Span></Span>`
 
-  expect(format(html)).toEqual(
+  expect(formatHTML(html)).toEqual(
     `
 <Span>
 </Span>
@@ -108,7 +108,7 @@ test('should not lower case tags', () => {
 test('should support xml', () => {
   const xml = `<?xml version="1.0" encoding="utf-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://www.example.com</loc></url><url><loc>https://www.example.com/test</loc></url></urlset>`
 
-  expect(format(xml)).toEqual(`
+  expect(formatHTML(xml)).toEqual(`
 <?xml
   version="1.0"
   encoding="utf-8"
@@ -133,7 +133,7 @@ test('should keep self-closing tags as they are', () => {
 
   // in the future this should be a self closing tag instead
   // see htmlparser2#69
-  expect(format(xml)).toEqual(`
+  expect(formatHTML(xml)).toEqual(`
 <xhtml:link href="https://en.example.com">
 </xhtml:link>
 <xhtml:link href="https://en.example.com">
@@ -143,7 +143,7 @@ test('should keep self-closing tags as they are', () => {
 
 test('should support doctype directives', () => {
   const html = `<!doctype html ><html></html>`
-  expect(format(html)).toEqual(`
+  expect(formatHTML(html)).toEqual(`
 <!doctype html>
 <html>
 </html>
@@ -178,7 +178,7 @@ test('should support html directives', () => {
   </body>
 </html>`
 
-  expect(format(html)).toEqual(`
+  expect(formatHTML(html)).toEqual(`
 <!doctype html>
 <html
   class="no-js"
@@ -229,7 +229,7 @@ test('should support html directives', () => {
 test('should strip out comments', () => {
   const html = `<p>Start</p><!-- This comment should be removed --><p>End</p>`
 
-  expect(format(html)).toEqual(
+  expect(formatHTML(html)).toEqual(
     `
 <p>
   Start
@@ -244,7 +244,7 @@ test('should strip out comments', () => {
 test('should strip out empty comments', () => {
   const html = `<p>Start</p><!----><p>End</p>`
 
-  expect(format(html)).toEqual(
+  expect(formatHTML(html)).toEqual(
     `
 <p>
   Start
@@ -259,7 +259,7 @@ test('should strip out empty comments', () => {
 test('should not strip out conditional comments', () => {
   const html = `<p>Start</p><!--[if IE 9]>.... some HTML here ....<![endif]--><p>End</p>`
 
-  expect(format(html)).toEqual(
+  expect(formatHTML(html)).toEqual(
     `
 <p>
   Start
@@ -275,7 +275,7 @@ test('should not strip out conditional comments', () => {
 test('should sort attributes with `sortAttributes` function', () => {
   const html = `<input name="test" value="true" class="form-control">`
   const sortAttributes = (names: string[]) => names.sort()
-  expect(format(html, { sortAttributes })).toEqual(
+  expect(formatHTML(html, { sortAttributes })).toEqual(
     `
 <input
   class="form-control"

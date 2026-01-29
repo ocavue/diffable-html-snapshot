@@ -253,4 +253,3 @@ function formatHTML(
 }
 
 export { formatHTML, type FormatHTMLOptions }
-export default formatHTML

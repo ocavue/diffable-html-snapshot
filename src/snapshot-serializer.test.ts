@@ -2,9 +2,8 @@ import { expect, test } from 'vitest'
 
 import snapshotSerializer from './snapshot-serializer'
 
-expect.addSnapshotSerializer(snapshotSerializer)
-
-test('should serialize HTML', () => {
+test('should add itself to the snapshot serializer', () => {
+  expect.addSnapshotSerializer(snapshotSerializer)
   expect('<div>  Hello, world!  </ div>').toMatchInlineSnapshot(`
     <div>
       Hello, world!
