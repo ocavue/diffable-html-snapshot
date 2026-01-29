@@ -1,7 +1,7 @@
 import { formatHTML } from './format-html'
 
 function serialize(value: unknown): string {
-  return typeof value === 'string' ? formatHTML(value) : ''
+  return typeof value === 'string' ? formatHTML(value).trim() : ''
 }
 
 function test(value: unknown): boolean {
