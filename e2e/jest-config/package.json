@@ -1,0 +1,13 @@
+{
+  "name": "e2e-jest-config",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "diffable-html-snapshot": "workspace:*",
+    "jest": "^30.2.0"
+  }
+}

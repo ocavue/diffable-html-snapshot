@@ -1,1 +1,3 @@
 ignoreWorkspaceRootCheck: true
+packages:
+  - 'e2e/**'

@@ -22,10 +22,12 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
       "default": "./dist/index.js"
     },
     "./snapshot-serializer": {
       "import": "./dist/snapshot-serializer.js",
+      "require": "./dist/snapshot-serializer.cjs",
       "default": "./dist/snapshot-serializer.js"
     }
   },
@@ -43,10 +45,11 @@
   ],
   "scripts": {
     "build": "tsdown",
-    "dev": "tsdown --watch",
     "lint": "eslint .",
     "fix": "eslint --fix . && prettier --write .",
-    "test": "vitest",
+    "test": "pnpm run build && pnpm run test:src && pnpm run test:e2e",
+    "test:src": "vitest run ./src",
+    "test:e2e": "pnpm --filter 'e2e-*' --sequential test",
     "typecheck": "tsc -b"
   },
   "dependencies": {
@@ -60,7 +63,6 @@
     "prettier": "^3.8.1",
     "tsdown": "^0.20.1",
     "typescript": "^5.9.3",
-    "vite": "^7.3.1",
     "vitest": "^4.0.18"
   }
 }

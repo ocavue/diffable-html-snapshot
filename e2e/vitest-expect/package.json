@@ -1,0 +1,13 @@
+{
+  "name": "e2e-vitest-expect",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "diffable-html-snapshot": "workspace:*",
+    "vitest": "^4.0.18"
+  }
+}
