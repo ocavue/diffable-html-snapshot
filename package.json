@@ -60,7 +60,7 @@
     "@ocavue/eslint-config": "^3.10.0",
     "@ocavue/tsconfig": "^0.6.2",
     "@types/node": "^20.19.10",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.2",
     "prettier": "^3.8.1",
     "tsdown": "^0.20.1",
     "typescript": "^5.9.3",
