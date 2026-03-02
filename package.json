@@ -58,9 +58,9 @@
   },
   "devDependencies": {
     "@ocavue/eslint-config": "^4.2.0",
-    "@ocavue/tsconfig": "^0.6.2",
+    "@ocavue/tsconfig": "^0.6.3",
     "@types/node": "^20.19.10",
-    "eslint": "^10.0.0",
+    "eslint": "^10.0.2",
     "prettier": "^3.8.1",
     "tsdown": "^0.20.3",
     "typescript": "^5.9.3",
