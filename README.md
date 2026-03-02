@@ -84,8 +84,8 @@ test('should format HTML', () => {
 
 ```js
 // html.test.js
-import { test, expect } from 'vitest'
 import { snapshotSerializer } from 'diffable-html-snapshot'
+import { test, expect } from 'vitest'
 
 expect.addSnapshotSerializer(snapshotSerializer)
 

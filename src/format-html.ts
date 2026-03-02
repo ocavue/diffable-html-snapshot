@@ -118,7 +118,7 @@ function formatHTML(
       return
     }
 
-    for (let name of names) {
+    for (const name of names) {
       appendAttributeOnNewLine(name, attributes[name])
     }
   }
@@ -150,7 +150,7 @@ function formatHTML(
   // https://www.w3.org/TR/html52/infrastructure.html#space-characters
   // defines "space characters" to include SPACE, TAB, LF, FF, and CR.
   const trimText = (text: string) => {
-    return text.replace(/^[\t\n\f\r ]+|[\t\n\f\r ]+$/g, '')
+    return text.replaceAll(/^[\t\n\f\r ]+|[\t\n\f\r ]+$/g, '')
   }
 
   const extractAttributesFromString = (
