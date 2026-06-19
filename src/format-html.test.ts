@@ -44,7 +44,7 @@ test('should trim text nodes', () => {
 })
 
 test('should not trim Unicode whitespace', () => {
-  const html = `<span> \u2009 surrounded  \u2005\u200A  </span>`
+  const html = `<span> \u{2009} surrounded  \u{2005}\u{200A}  </span>`
 
   expect(formatHTML(html)).toMatchInlineSnapshot()
 })
