@@ -1,5 +1,5 @@
 allowBuilds:
-  unrs-resolver: set this to true or false
+  unrs-resolver: false
 ignoreWorkspaceRootCheck: true
 packages:
   - 'e2e/**'
