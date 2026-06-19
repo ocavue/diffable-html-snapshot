@@ -160,16 +160,16 @@ function formatHTML(
 
     const pieces = content.split(/\s/)
     // Remove tag name.
-    pieces.splice(0, 1)
+    pieces.shift()
 
-    pieces.forEach((element) => {
+    for (const element of pieces) {
       if (element.length === 0) {
-        return
+        continue
       }
       if (!element.includes('=')) {
         attributes[element] = ''
       }
-    })
+    }
 
     const attributesRegex = /(\S+)=["']?((?:.(?!["']?\s+\S+=|["'>]))+.)["']?/gim
 
