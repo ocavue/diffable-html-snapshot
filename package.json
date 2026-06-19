@@ -50,11 +50,11 @@
     "fix": "eslint --fix . && prettier --write .",
     "test": "pnpm run build && pnpm run test:src && pnpm run test:e2e",
     "test:src": "vitest run ./src",
-    "test:e2e": "pnpm --filter 'e2e-*' --sequential test",
+    "test:e2e": "pnpm --filter \"e2e-*\" --sequential test",
     "typecheck": "tsc -b"
   },
   "dependencies": {
-    "htmlparser2": "^10.1.0"
+    "htmlparser2": "^11.0.0"
   },
   "devDependencies": {
     "@ocavue/eslint-config": "^4.8.1",
