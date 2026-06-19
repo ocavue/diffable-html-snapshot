@@ -1,6 +1,5 @@
 /** @type {import('jest').Config} */
-const config = {
+export default {
+  transform: {},
   snapshotSerializers: ['diffable-html-snapshot/snapshot-serializer'],
 }
-
-module.exports = config
