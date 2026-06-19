@@ -139,10 +139,6 @@ test('should support xml', () => {
 
   expect(formatHTML(xml)).toMatchInlineSnapshot(`
     "
-    <?xml
-      encoding="utf-8"
-      version="1.0"
-    ?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <url>
         <loc>
