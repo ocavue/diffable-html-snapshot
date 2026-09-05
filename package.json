@@ -2,7 +2,7 @@
   "name": "diffable-html-snapshot",
   "type": "module",
   "version": "0.3.0",
-  "packageManager": "pnpm@11.6.0",
+  "packageManager": "pnpm@11.25.0",
   "description": "Making HTML diffs readable for tests",
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
@@ -57,13 +57,13 @@
     "htmlparser2": "^12.0.0"
   },
   "devDependencies": {
-    "@ocavue/eslint-config": "^4.8.1",
+    "@ocavue/eslint-config": "^4.16.1",
     "@ocavue/tsconfig": "^0.7.1",
     "@types/node": "^24.0.0",
-    "eslint": "^10.5.0",
-    "prettier": "^3.8.4",
-    "tsdown": "^0.22.3",
+    "eslint": "^10.10.0",
+    "prettier": "^3.9.6",
+    "tsdown": "^0.23.0",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.11"
   }
 }
