@@ -8,6 +8,6 @@
   },
   "devDependencies": {
     "diffable-html-snapshot": "workspace:*",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.11"
   }
 }
