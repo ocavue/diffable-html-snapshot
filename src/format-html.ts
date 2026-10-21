@@ -171,6 +171,7 @@ function formatHTML(
       }
     }
 
+    // eslint-disable-next-line regexp/no-super-linear-backtracking
     const attributesRegex = /(\S+)=["']?((?:.(?!["']?\s+\S+=|["'>]))+.)["']?/g
 
     let result
