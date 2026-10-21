@@ -171,7 +171,7 @@ function formatHTML(
       }
     }
 
-    const attributesRegex = /(\S+)=["']?((?:.(?!["']?\s+\S+=|["'>]))+.)["']?/gim
+    const attributesRegex = /(\S+)=["']?((?:.(?!["']?\s+\S+=|["'>]))+.)["']?/g
 
     let result
     while ((result = attributesRegex.exec(content))) {

@@ -106,7 +106,7 @@ test('should not trim Unicode whitespace', () => {
   expect(formatHTML(html)).toMatchInlineSnapshot(`
     "
     <span>
-        surrounded    
+      \u{2009} surrounded  \u{2005}\u{200A}
     </span>
     "
   `)
