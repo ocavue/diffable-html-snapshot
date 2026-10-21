@@ -1,1 +1,1 @@
-{"version":3,"file":"format-html.d.cts","names":[],"sources":["../src/format-html.ts"],"mappings":";UAsBU,iBAAA;EACR,cAAA,IAAkB,KAAe;AAAA;AAAA,iBAO1B,UAAA,CACP,IAAA;EACE;AAAA,IAA0C,iBAAsB"}
+{"version":3,"file":"format-html.d.cts","names":[],"sources":["../src/format-html.ts"],"mappings":";UAsBU;EACR,kBAAkB;;iBAOX,WACP,gBACE,mBAA0C"}
