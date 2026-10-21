@@ -124,9 +124,10 @@ This library is ESM-only. Jest's ESM support is still experimental, so you need 
 ```js
 // jest.config.js
 /** @type {import('jest').Config} */
-export default {
+const config = {
   transform: {},
 }
+export default config
 ```
 
 See the [Jest ECMAScript Modules guide](https://jestjs.io/docs/ecmascript-modules) for more details.
