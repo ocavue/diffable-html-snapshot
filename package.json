@@ -61,7 +61,7 @@
     "@ocavue/tsconfig": "^0.7.1",
     "@types/node": "^24.0.0",
     "eslint": "^10.13.0",
-    "prettier": "^3.8.4",
+    "prettier": "^3.9.10",
     "tsdown": "^0.23.1",
     "typescript": "^6.0.3",
     "vitest": "^5.0.5"
