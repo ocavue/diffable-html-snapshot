@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0](https://github.com/ocavue/diffable-html-snapshot/compare/v0.2.0...v0.3.0) (2026-06-19)
+
+
+### Features
+
+* update dependency htmlparser2 to v11 ([#11](https://github.com/ocavue/diffable-html-snapshot/issues/11)) ([b716f8d](https://github.com/ocavue/diffable-html-snapshot/commit/b716f8de61e066bafff93fbfca279f2c8851c01a))
+* update dependency htmlparser2 to v12 ([#19](https://github.com/ocavue/diffable-html-snapshot/issues/19)) ([de814a0](https://github.com/ocavue/diffable-html-snapshot/commit/de814a0cfd61b1d8151386aab7a5901be5bd3088))
+
 ## 0.2.0 (2026-01-29)
 
 

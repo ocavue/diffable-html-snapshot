@@ -171,7 +171,8 @@ function formatHTML(
       }
     }
 
-    const attributesRegex = /(\S+)=["']?((?:.(?!["']?\s+\S+=|["'>]))+.)["']?/gim
+    // eslint-disable-next-line regexp/no-super-linear-backtracking
+    const attributesRegex = /(\S+)=["']?((?:.(?!["']?\s+\S+=|["'>]))+.)["']?/g
 
     let result
     while ((result = attributesRegex.exec(content))) {
