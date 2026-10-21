@@ -20,3 +20,6 @@ const plugin = {
 } satisfies SnapshotSerializer
 
 export default plugin
+
+// Compatibility for Jest
+export { serialize, test }
