@@ -2,7 +2,7 @@
   "name": "diffable-html-snapshot",
   "type": "module",
   "version": "0.3.0",
-  "packageManager": "pnpm@11.6.0",
+  "packageManager": "pnpm@11.28.6",
   "description": "Making HTML diffs readable for tests",
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
