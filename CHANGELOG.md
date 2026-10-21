@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/ocavue/diffable-html-snapshot/compare/v0.3.0...v0.4.0) (2026-10-21)
+
+
+### Features
+
+* migrate to ESM-only ([#20](https://github.com/ocavue/diffable-html-snapshot/issues/20)) ([da97bda](https://github.com/ocavue/diffable-html-snapshot/commit/da97bdaebd5604221e107e53d480bae827038d91))
+
 ## [0.3.0](https://github.com/ocavue/diffable-html-snapshot/compare/v0.2.0...v0.3.0) (2026-06-19)
 
 
