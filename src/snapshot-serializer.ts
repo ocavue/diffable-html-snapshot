@@ -1,3 +1,5 @@
+import type { SnapshotSerializer } from 'vitest'
+
 import { formatHTML } from './format-html'
 
 function serialize(value: unknown): string {
@@ -15,6 +17,9 @@ function test(value: unknown): boolean {
 const plugin = {
   serialize,
   test,
-}
+} satisfies SnapshotSerializer
 
 export default plugin
+
+// Compatibility for Jest
+export { serialize, test }

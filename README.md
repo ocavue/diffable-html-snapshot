@@ -109,13 +109,37 @@ export default defineConfig({
 
 ## Usage with [Jest](https://jestjs.io/)
 
+This library is ESM-only. Jest's ESM support is still experimental, so you need to run Jest with `--experimental-vm-modules` and disable code transforms with `transform: {}`, for example:
+
+```json
+// package.json
+{
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  }
+}
+```
+
+```js
+// jest.config.js
+/** @type {import('jest').Config} */
+const config = {
+  transform: {},
+}
+export default config
+```
+
+See the [Jest ECMAScript Modules guide](https://jestjs.io/docs/ecmascript-modules) for more details.
+
 There are three ways to use this library with Jest:
 
 ### 1. Explicitly call `formatHTML` in your tests
 
 ```js
-// html.test.cjs
-const { formatHTML } = require('diffable-html-snapshot')
+// html.test.js
+import { expect, test } from '@jest/globals'
+import { formatHTML } from 'diffable-html-snapshot'
 
 test('should format HTML', () => {
   expect(
@@ -127,8 +151,9 @@ test('should format HTML', () => {
 ### 2. Use `expect.addSnapshotSerializer` in your test file
 
 ```js
-// html.test.cjs
-const { snapshotSerializer } = require('diffable-html-snapshot')
+// html.test.js
+import { expect, test } from '@jest/globals'
+import { snapshotSerializer } from 'diffable-html-snapshot'
 
 expect.addSnapshotSerializer(snapshotSerializer)
 
@@ -137,16 +162,17 @@ test('should format HTML', () => {
 })
 ```
 
-### 3. Configure in your `jest.config.cjs` file
+### 3. Configure in your `jest.config.js` file
+
+Add `snapshotSerializers` to the config above:
 
 ```js
-// jest.config.cjs
+// jest.config.js
 /** @type {import('jest').Config} */
-const config = {
+export default {
+  transform: {},
   snapshotSerializers: ['diffable-html-snapshot/snapshot-serializer'],
 }
-
-module.exports = config
 ```
 
 ## Credits
